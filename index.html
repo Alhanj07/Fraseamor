@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hai Shi Shan Meng ❤</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fdf6e3;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden; /* Para evitar barras de desplazamiento por los corazones */
+            margin: 0;
+        }
+
+        #mensaje {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            margin: 20px auto;
+            max-width: 100%;
+            color: #b85c5c;
+            visibility: hidden; /* Oculta el mensaje inicialmente */
+            word-wrap: break-word;
+        }
+
+        .heart {
+            color: red;
+            font-size: 2rem;
+            visibility: hidden; /* Oculta el corazón inicialmente */
+        }
+
+        #boton {
+            background-color: #b85c5c;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #boton:hover {
+            background-color: #a04a4a;
+        }
+
+        /* Animación de los corazones cayendo con color rojo */
+        .corazon-cayendo {
+            position: absolute;
+            font-size: 30px;
+            color: red; /* Cambié el color aquí a rojo */
+            animation: caer 5s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes caer {
+            0% {
+                top: -50px;
+                left: random(100%);
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Hacer el texto y los botones responsivos */
+        @media screen and (max-width: 768px) {
+            #mensaje {
+                font-size: 1rem;
+                max-width: 90%; /* Permite que el texto ocupe el 90% del ancho en pantallas más pequeñas */
+            }
+
+            #boton {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            #mensaje {
+                font-size: 0.9rem;
+                max-width: 90%;
+            }
+
+            #boton {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Para Mi Querida Wanda ❤</h1>
+    <button id="boton">Haz clic aqui mi niña para ver el mensaje✨</button>
+    <div id="mensaje"></div>
+    <p class="heart" id="corazon">❤ Para siempre contigo, mi Wanda ❤</p>
+    <audio id="musica" src="amor.mp3"></audio> <!-- Aquí se agrega la música -->
+
+    <script>
+        const mensaje = `
+Mi querida Wanda ❤,
+Quiero que sepas que mi amor por ti es tan vasto como el océano y tan sólido como las montañas.
+En este momento, hago contigo un HAI SHI SHAN MENG, un juramento eterno,
+prometiendo que siempre estaré a tu lado, sin importar las tormentas ni los obstáculos que la vida nos ponga.
+Tú eres mi todo, y este amor que siento por ti durará más allá del tiempo...
+        `;
+
+        const boton = document.getElementById("boton");
+        const elemento = document.getElementById("mensaje");
+        const corazon = document.getElementById("corazon");
+        const musica = document.getElementById("musica");
+        let i = 0;
+
+        function escribirTexto() {
+            if (i < mensaje.length) {
+                elemento.textContent += mensaje.charAt(i);
+                i++;
+                setTimeout(escribirTexto, 50); // Controla la velocidad de escritura
+            } else {
+                corazon.style.visibility = "visible"; // Muestra el corazón al final
+            }
+        }
+
+        function crearCorazon() {
+            const corazonElemento = document.createElement('div');
+            corazonElemento.classList.add('corazon-cayendo');
+            corazonElemento.textContent = '❤';
+            corazonElemento.style.left = Math.random() * 100 + '%'; // Posición aleatoria horizontal
+            document.body.appendChild(corazonElemento);
+
+            // Eliminar el corazón después de que termine la animación
+            setTimeout(() => {
+                corazonElemento.remove();
+            }, 5000);
+        }
+
+        boton.addEventListener("click", () => {
+            boton.style.display = "none"; // Oculta el botón al hacer clic
+            elemento.style.visibility = "visible"; // Muestra el contenedor del mensaje
+            musica.play(); // Reproduce la música
+            escribirTexto();
+            setInterval(crearCorazon, 200); // Crea un nuevo corazón cada 200ms
+        });
+    </script>
+</body>
+</html>
