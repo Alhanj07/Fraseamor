@@ -3,148 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hai Shi Shan Meng ❤</title>
+    <title>Página para mi Novia</title>
     <style>
+        /* Estilos CSS dentro del archivo HTML */
+
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #fdf6e3;
-            color: #333;
+            background-color: #ffcccb;
             text-align: center;
-            padding: 20px;
-            overflow: hidden; /* Para evitar barras de desplazamiento por los corazones */
+            padding: 0;
             margin: 0;
         }
 
-        #mensaje {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            margin: 20px auto;
-            max-width: 100%;
-            color: #b85c5c;
-            visibility: hidden; /* Oculta el mensaje inicialmente */
-            word-wrap: break-word;
+        .container {
+            padding: 50px;
+            margin-top: 20%;
         }
 
-        .heart {
-            color: red;
-            font-size: 2rem;
-            visibility: hidden; /* Oculta el corazón inicialmente */
+        h1 {
+            color: #d50000;
+            font-size: 3rem;
         }
 
-        #boton {
-            background-color: #b85c5c;
+        p {
+            font-size: 1.5rem;
+            color: #ff4081;
+        }
+
+        button {
+            background-color: #ff80ab;
             color: white;
-            font-size: 1rem;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
 
-        #boton:hover {
-            background-color: #a04a4a;
+        button:hover {
+            background-color: #ff4081;
         }
 
-        /* Animación de los corazones cayendo con color rojo */
-        .corazon-cayendo {
-            position: absolute;
-            font-size: 30px;
-            color: red; /* Cambié el color aquí a rojo */
-            animation: caer 5s linear infinite;
-            opacity: 0.7;
+        /* Mensaje oculto por defecto */
+        #messageContainer {
+            margin-top: 30px;
+            display: none; /* Ocultamos el mensaje */
+            font-size: 1.2rem;
+            color: #d50000;
+            line-height: 1.6;
+            text-align: left;
+            padding: 20px;
+            background-color: #ffe0e0;
+            border-radius: 10px;
+            border: 2px solid #ff80ab;
         }
 
-        @keyframes caer {
-            0% {
-                top: -50px;
-                left: random(100%);
-                opacity: 1;
-            }
-            100% {
-                top: 100%;
-                opacity: 0;
-            }
-        }
-
-        /* Hacer el texto y los botones responsivos */
-        @media screen and (max-width: 768px) {
-            #mensaje {
-                font-size: 1rem;
-                max-width: 90%; /* Permite que el texto ocupe el 90% del ancho en pantallas más pequeñas */
-            }
-
-            #boton {
-                padding: 8px 15px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            #mensaje {
-                font-size: 0.9rem;
-                max-width: 90%;
-            }
-
-            #boton {
-                padding: 8px 15px;
-                font-size: 0.8rem;
-            }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <h1>Para Mi Querida Wanda ❤</h1>
-    <button id="boton">Haz clic aqui mi niña para ver el mensaje✨</button>
-    <div id="mensaje"></div>
-    <p class="heart" id="corazon">❤ Para siempre contigo, mi Wanda ❤</p>
-    <audio id="musica" src="amor.mp3"></audio> <!-- Aquí se agrega la música -->
+    <div class="container">
+        <h1>Para ti, mi amor ❤️</h1>
+        <p>Haz clic en el botón y verás algo especial...</p>
+        <button id="loveButton">Click aquí mi niña</button>
+        
+        <div id="messageContainer" class="hidden">
+            <p class="romanticMessage">
+                Desde que te conocí, mi alma ha experimentado una epifanía amorosa que trasciende el tiempo y el espacio. Siento que cada momento a tu lado es un amaranto, eterno y lleno de significado. Mi corazón, antes perdido en la limerencia de deseos fugaces, ahora late con la calma profunda de una eunoia compartida, donde cada pensamiento es un suspiro que se eleva hacia ti, My Wanda ❤️.
+                <br><br>
+                Tu amor es mi sublime refugio, el faro que ilumina mis días más oscuros, y en tus ojos encuentro una cenestesia que me envuelve, como si el mundo entero se redujera a un rincón de nuestro propio universo. Aunque a veces experimente la saudade cuando no estás, sé que este amor es la esencia misma de mi ser, algo que no puede ser más que inmortal, como un amaranto que florece siempre, incluso cuando nos separan las distancias.
+            </p>
+        </div>
+    </div>
 
     <script>
-        const mensaje = `
-Mi querida Wanda ❤,
-Quiero que sepas que mi amor por ti es tan vasto como el océano y tan sólido como las montañas.
-En este momento, hago contigo un HAI SHI SHAN MENG, un juramento eterno,
-prometiendo que siempre estaré a tu lado, sin importar las tormentas ni los obstáculos que la vida nos ponga.
-Tú eres mi todo, y este amor que siento por ti durará más allá del tiempo...
-        `;
+        // JavaScript dentro del archivo HTML
 
-        const boton = document.getElementById("boton");
-        const elemento = document.getElementById("mensaje");
-        const corazon = document.getElementById("corazon");
-        const musica = document.getElementById("musica");
-        let i = 0;
-
-        function escribirTexto() {
-            if (i < mensaje.length) {
-                elemento.textContent += mensaje.charAt(i);
-                i++;
-                setTimeout(escribirTexto, 50); // Controla la velocidad de escritura
-            } else {
-                corazon.style.visibility = "visible"; // Muestra el corazón al final
-            }
-        }
-
-        function crearCorazon() {
-            const corazonElemento = document.createElement('div');
-            corazonElemento.classList.add('corazon-cayendo');
-            corazonElemento.textContent = '❤';
-            corazonElemento.style.left = Math.random() * 100 + '%'; // Posición aleatoria horizontal
-            document.body.appendChild(corazonElemento);
-
-            // Eliminar el corazón después de que termine la animación
-            setTimeout(() => {
-                corazonElemento.remove();
-            }, 5000);
-        }
-
-        boton.addEventListener("click", () => {
-            boton.style.display = "none"; // Oculta el botón al hacer clic
-            elemento.style.visibility = "visible"; // Muestra el contenedor del mensaje
-            musica.play(); // Reproduce la música
-            escribirTexto();
-            setInterval(crearCorazon, 200); // Crea un nuevo corazón cada 200ms
+        document.getElementById("loveButton").addEventListener("click", function() {
+            const messageContainer = document.getElementById("messageContainer");
+            messageContainer.classList.toggle("hidden"); // Mostramos el mensaje
         });
     </script>
 </body>
